@@ -1,6 +1,7 @@
 import React from 'react';
 import LikeButton from './LikeButton';
 import BookmarkButton from './BookmarkButton';
+import Comments from './Comments';
 import AddComment from './AddComment';
 import {getHeaders} from './utils';
 
@@ -71,15 +72,15 @@ class Post extends React.Component {
                         { post.caption }.. <button className="link">more</button>
                         </p>
                     </div>
+                    <div className = "timestamp">{ post.display_time }</div>
                     <div className="comments">
-                        <div className="add-comment">
-                            <div className="input-holder">
-                                <input
-                                    type="text"
-                                    placeholder="Add a comment..."/>
-                            </div>
-                            <button className="link">Post</button>
-                        </div>
+                        <Comments 
+                            postId={post.id}
+                            comments={post.comments}
+                            requeryPost={this.requeryPost}/>
+                        <AddComment
+                            postId={post.id}
+                            requeryPost={this.requeryPost} />
                     </div>
                 </div>
             </section> 
