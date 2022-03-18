@@ -1,6 +1,7 @@
 import React from 'react';
 import LikeButton from './LikeButton';
 import BookmarkButton from './BookmarkButton';
+import AddComment from './AddComment';
 import {getHeaders} from './utils';
 
 class Post extends React.Component {  
@@ -53,6 +54,8 @@ class Post extends React.Component {
                                 postId={post.id} 
                                 likeId={post.current_user_like_id}
                                 requeryPost={this.requeryPost} />
+                            <i className="far fa-comment"></i>
+                            <i className="far fa-paper-plane"></i>
                         </div>
                         <div>
                             <BookmarkButton
@@ -61,7 +64,23 @@ class Post extends React.Component {
                                 requeryPost={this.requeryPost} />
                         </div>
                     </div>
-                    <p>{ post.caption }</p>
+                    <p className={'likes-' + post.id}><strong> { post.likes.length } like{post.likes.length !== 1 ? 's' : ''}</strong></p>
+                    <div className="caption">
+                        <p>
+                        <strong> { post.user.username }</strong> 
+                        { post.caption }.. <button className="link">more</button>
+                        </p>
+                    </div>
+                    <div className="comments">
+                        <div className="add-comment">
+                            <div className="input-holder">
+                                <input
+                                    type="text"
+                                    placeholder="Add a comment..."/>
+                            </div>
+                            <button className="link">Post</button>
+                        </div>
+                    </div>
                 </div>
             </section> 
         );     

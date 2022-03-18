@@ -23,6 +23,7 @@ class Profile extends React.Component {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             this.setState({ profile: data });
         })
     }
